@@ -1,0 +1,78 @@
+﻿<Window x:Class="Marseille.Forms.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Marseille.Forms"
+        mc:Ignorable="d"
+        Title="LoginWindow" Height="450" Width="800" Icon="/Resources/white.png">
+    <Window.Effect>
+        <DropShadowEffect />
+    </Window.Effect>
+
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="{x:Type TextBox}">
+                <Style.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10" />
+                    </Style>
+                </Style.Resources>
+            </Style>
+            <Style TargetType="{x:Type PasswordBox}">
+                <Style.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10" />
+                    </Style>
+                </Style.Resources>
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Image x:Name="TitleImage" Grid.Column="1" Grid.RowSpan="5" Source="/Forms/LoginWindowImage.jpg" Stretch="UniformToFill" StretchDirection="Both" HorizontalAlignment="Right">
+            <Image.Effect>
+                <BlurEffect />
+            </Image.Effect>
+        </Image>
+        <Canvas x:Name="TitleImageColor" Grid.Column="1" Grid.RowSpan="5" Background="#994446DE"></Canvas>
+        <Border Grid.Row="1" Margin="0 5">
+            <Viewbox Stretch="Uniform" HorizontalAlignment="Center">
+                <TextBox x:Name="loginBox" BorderThickness="4" FontSize="18" BorderBrush="#FF5759EA" Width="200" FontFamily="Segoe UI Semibold"></TextBox>
+            </Viewbox>
+        </Border>
+        <Border Grid.Row="2" Margin="0 5">
+            <Viewbox Stretch="Uniform" HorizontalAlignment="Center">
+                <PasswordBox x:Name="passwordBox" BorderThickness="4" FontSize="18" BorderBrush="#FF5759EA" Width="200" FontFamily="Segoe UI Semibold">
+                    <PasswordBox.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10" />
+                        </Style>
+                    </PasswordBox.Resources>
+                </PasswordBox>
+            </Viewbox>
+        </Border>
+        <Border Grid.Row="3" Margin="0 5">
+            <Viewbox Stretch="Uniform" HorizontalAlignment="Center">
+                <Button x:Name="loginButton" Grid.Row="3" IsDefault="True" FontFamily="Segoe UI Semibold" Width="125" Background="#FF5759EA" BorderBrush="{x:Null}" Foreground="White" Initialized="loginButton_Initialized" Click="loginButton_Click">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="3" />
+                            <Setter Property="BorderBrush" Value="Transparent" />
+                        </Style>
+                    </Button.Resources>
+                    Login
+                </Button>
+            </Viewbox>
+        </Border>
+    </Grid>
+</Window>
