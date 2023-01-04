@@ -63,7 +63,7 @@
         </Border>
         <Border Grid.Row="3" Margin="0 5">
             <Viewbox Stretch="Uniform" HorizontalAlignment="Center">
-                <Button x:Name="loginButton" Grid.Row="3" IsDefault="True" FontFamily="Segoe UI Semibold" Width="125" Background="#FF5759EA" BorderBrush="{x:Null}" Foreground="White" Initialized="loginButton_Initialized" Click="loginButton_Click">
+                <Button x:Name="loginButton" Grid.Row="3" IsDefault="True" FontFamily="Segoe UI Semibold" Width="125" Background="#FF5759EA" BorderBrush="{x:Null}" Foreground="White" Initialized="loginButton_Initialized">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="3" />
