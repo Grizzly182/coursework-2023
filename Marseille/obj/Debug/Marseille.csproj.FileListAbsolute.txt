@@ -4,11 +4,9 @@ C:\CourseWork\Marseille\bin\Debug\Marseille.pdb
 C:\CourseWork\Marseille\obj\Debug\Marseille.csproj.AssemblyReference.cache
 C:\CourseWork\Marseille\obj\Debug\Marseille.csproj.SuggestedBindingRedirects.cache
 C:\CourseWork\Marseille\obj\Debug\Forms\LoginWindow.g.cs
-C:\CourseWork\Marseille\obj\Debug\MainWindow.g.cs
 C:\CourseWork\Marseille\obj\Debug\App.g.cs
 C:\CourseWork\Marseille\obj\Debug\Marseille_MarkupCompile.cache
 C:\CourseWork\Marseille\obj\Debug\Marseille_MarkupCompile.lref
-C:\CourseWork\Marseille\obj\Debug\MainWindow.baml
 C:\CourseWork\Marseille\obj\Debug\Forms\LoginWindow.baml
 C:\CourseWork\Marseille\obj\Debug\Marseille.g.resources
 C:\CourseWork\Marseille\obj\Debug\Marseille.Properties.Resources.resources
@@ -16,6 +14,7 @@ C:\CourseWork\Marseille\obj\Debug\Marseille.csproj.GenerateResource.cache
 C:\CourseWork\Marseille\obj\Debug\Marseille.csproj.CoreCompileInputs.cache
 C:\CourseWork\Marseille\obj\Debug\Marseille.exe
 C:\CourseWork\Marseille\obj\Debug\Marseille.pdb
+C:\CourseWork\Marseille\bin\Debug\HotelDB.dll
 C:\CourseWork\Marseille\bin\Debug\MySql.Data.dll
 C:\CourseWork\Marseille\bin\Debug\Google.Protobuf.dll
 C:\CourseWork\Marseille\bin\Debug\ZstdNet.dll
@@ -26,6 +25,7 @@ C:\CourseWork\Marseille\bin\Debug\System.Buffers.dll
 C:\CourseWork\Marseille\bin\Debug\K4os.Compression.LZ4.dll
 C:\CourseWork\Marseille\bin\Debug\K4os.Hash.xxHash.dll
 C:\CourseWork\Marseille\bin\Debug\System.Numerics.Vectors.dll
+C:\CourseWork\Marseille\bin\Debug\HotelDB.pdb
 C:\CourseWork\Marseille\bin\Debug\MySql.Data.xml
 C:\CourseWork\Marseille\obj\Debug\Marseille.exe.config
 C:\CourseWork\Marseille\obj\Debug\Marseille.csproj.CopyComplete

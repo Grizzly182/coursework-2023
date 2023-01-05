@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using HotelDB;
 
 namespace Marseille.Forms
 {
@@ -28,6 +29,19 @@ namespace Marseille.Forms
         private void loginButton_Initialized(object sender, EventArgs e)
         {
             loginButton.BorderBrush = new SolidColorBrush(Colors.Transparent);
+        }
+
+        private void loginButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string ok = DBConnection.GetPasswordHash("admin");
+                MessageBox.Show(ok);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
