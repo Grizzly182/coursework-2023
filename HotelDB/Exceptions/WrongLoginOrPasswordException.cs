@@ -4,6 +4,6 @@ namespace Marseille.Assets.Exceptions
 {
     internal class WrongLoginOrPasswordException : Exception
     {
-        public override string Message => "Wrong login or password entered!";
+        public override string Message => "Неверный логин или пароль";
     }
 }
