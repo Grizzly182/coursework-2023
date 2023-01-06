@@ -50,7 +50,9 @@
   <ItemGroup>
     <Compile Include="DBConnection.cs" />
     <Compile Include="Exceptions\WrongLoginOrPasswordException.cs" />
+    <Compile Include="HashComputer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaltGenerator.cs" />
     <Compile Include="Utility.cs" />
   </ItemGroup>
   <ItemGroup />
