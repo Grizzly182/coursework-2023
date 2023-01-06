@@ -5,20 +5,32 @@ using System.Text;
 
 namespace HotelDB
 {
+    /// <summary>
+    /// Класс, отвечающий за подключение к базе данных
+    /// </summary>
     public static class DBConnection
     {
         /// <summary>
-        /// Change "connectionString" variable to connect to other database.
+        /// Измените содержание этой строки чтобы подключиться к другой базе данных MySql
         /// </summary>
         private static readonly string connectionString = "server=localhost; port=3306; user id=root; password=root; database=marseille";
 
+        /// <summary>
+        /// Статическое поле, является объект класса MySqlConnection, является подключением
+        /// </summary>
         private static readonly MySqlConnection connection = new MySqlConnection(connectionString);
 
+        /// <summary>
+        /// Данный метод запускает соединение с БД
+        /// </summary>
         public static void Open()
         {
             connection.Open();
         }
 
+        /// <summary>
+        /// Данный метод прекращает соединение с БД
+        /// </summary>
         public static void Close()
         {
             connection.Close();
@@ -44,18 +56,21 @@ namespace HotelDB
         }
 
         /// <summary>
-        /// In this function we are getting password's hash from our database
-        /// via searching by user login
+        /// С помощью этой функции осуществляется поиск пользователя по логину,
+        /// который задаётся в аргументах функции и получение хэша пароля данного пользователя.
         /// </summary>
-        /// <param name="login"></param>
-        /// <returns></returns>
+        /// <param name="login">Логин необходимого пользователя</param>
+        /// <returns>Возвращает строку хэша пароля</returns>
         public static string GetPasswordHash(string login)
         {
-            Open();
+            //Пишем запрос в базу данных
             MySqlCommand cmd = connection.CreateCommand();
             cmd.CommandText = $"SELECT * FROM `users` WHERE `login` = @login";
             cmd.Parameters.AddWithValue("@login", login);
             string outString = "";
+
+            Open();
+            //Читаем из БД
             using (MySqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
