@@ -12,8 +12,8 @@ namespace HotelDB
         /// <summary>
         /// Вспомогательная функция, возвращающая строку.
         /// </summary>
-        /// <param name="byteData">На вход идёт массив байтов(8-ми разрядных чисел).</param>
-        /// <returns>Возвращает строковое представление массива 8-ми разрядных чисел.</returns>
+        /// <param name="byteData">На вход идёт массив байтов.</param>
+        /// <returns>Возвращает строковое представление массива байтов.</returns>
         public static string GetString(byte[] byteData)
         {
             return Convert.ToBase64String(byteData);
