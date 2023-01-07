@@ -33,14 +33,9 @@ namespace Marseille.Forms
 
         private void loginButton_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if (DBConnection.Login(loginBox.Text, passwordBox.Password))
             {
-                string ok = DBConnection.GetPasswordHash("admin");
-                MessageBox.Show(ok);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("ALL GOOD!!!!!");
             }
         }
     }
