@@ -29,3 +29,4 @@ C:\CourseWork\Marseille\bin\Debug\HotelDB.pdb
 C:\CourseWork\Marseille\bin\Debug\MySql.Data.xml
 C:\CourseWork\Marseille\obj\Debug\Marseille.exe.config
 C:\CourseWork\Marseille\obj\Debug\Marseille.csproj.CopyComplete
+C:\CourseWork\Marseille\bin\Debug\HotelDB.xml
