@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace HotelDB
 {
@@ -27,7 +28,7 @@ namespace HotelDB
         /// <returns>Возвращает массив байтов, конвертированных из строки</returns>
         public static byte[] GetBytes(string str)
         {
-            return Convert.FromBase64String(str);
+            return Encoding.ASCII.GetBytes(str);
         }
     }
 }
