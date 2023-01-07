@@ -1,7 +1,4 @@
 ﻿using MySql.Data.MySqlClient;
-using System;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace HotelDB
 {
@@ -36,67 +33,66 @@ namespace HotelDB
             connection.Close();
         }
 
-        //Test Method
-        public static bool FindUser(string login)
+        /// <summary>
+        /// Функция для проверки правильности введённых данных.
+        /// </summary>
+        /// <param name="login">Логин, введённый пользователем в окне входа.</param>
+        /// <param name="password">Пароль, введённый пользователем в окне входа.</param>
+        /// <returns>Возвращает true, если верен, иначе - false.</returns>
+        public static bool Login(string login, string password)
         {
-            Open();
-            MySqlCommand cmd = connection.CreateCommand();
-            cmd.CommandText = $"SELECT * FROM `users` WHERE `login` = @login";
-            cmd.Parameters.AddWithValue("@login", login);
-            string username = "";
-            using (MySqlDataReader reader = cmd.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    username = reader.GetString("login");
-                }
-            }
-            Close();
-            return username == login;
+            string passFromDB;
+            string saltFromDB;
+
+            passFromDB = GetPasswordHashAndSaltFromDB(login, out saltFromDB);
+
+            PasswordManager passwordManager = new PasswordManager();
+            return passwordManager.IsPasswordsMatch(password, saltFromDB, passFromDB);
         }
 
         /// <summary>
-        /// С помощью этой функции осуществляется поиск пользователя по логину,
-        /// который задаётся в аргументах функции и получение хэша пароля данного пользователя.
+        /// Эта функция запрашивет из базы данных пароль и соль определённого пользователя.
+        /// Логин этого пользователя передаётся в аргументах.
         /// </summary>
         /// <param name="login">Логин необходимого пользователя</param>
-        /// <returns>Возвращает строку хэша пароля</returns>
-        public static string GetPasswordHash(string login)
+        /// <param name="salt">В данный аргумент нужно передать переменную типа string, в неё запишется соль из Базы данных.</param>
+        /// <returns>Возвращает строку хэша пароля и соль из базы данных</returns>
+        private static string GetPasswordHashAndSaltFromDB(string login, out string salt)
         {
             //Пишем запрос в базу данных
             MySqlCommand cmd = connection.CreateCommand();
             cmd.CommandText = $"SELECT * FROM `users` WHERE `login` = @login";
             cmd.Parameters.AddWithValue("@login", login);
-            string outString = "";
+            string password = "";
+            salt = "";
 
-            Open();
             //Читаем из БД
+            Open();
             using (MySqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    outString = reader.GetString("password");
+                    password = reader.GetString("password");
+                    salt = reader.GetString("salt");
                 }
             }
             Close();
-            return outString;
+
+            return password;
         }
 
-        public static void RegisterAdmin(string password)
+        //TODO: Delete this later
+        /*public static void RegisterAdmin(string password)
         {
             MySqlCommand cmd = connection.CreateCommand();
-            byte[] byteData = Encoding.ASCII.GetBytes(password);
-            //string stringPassword = password.ComputeHash(password);
-            cmd.CommandText = "INSERT INTO users (`login`, `password`, `salt`, `role`, `name`, `surname`, `patronymic`) VALUES (\"admin\", SHA1(UNHEX(SHA1(\"35z663y31\"))), RANDOM_BYTES(8), 1, \"Михаил\", \"Белоусов\", \"Анатольевич\");";
+            PasswordManager passwordManager = new PasswordManager();
+            string salt = null;
+            string hashPassword = passwordManager.GeneratePasswordHash(password, out salt);
+
+            cmd.CommandText = $"INSERT INTO marseille.users (`login`, `password`, `salt`, `name`, `surname`, `patronymic`) VALUES ('admin', '{hashPassword}', '{salt}', 'Михаил', 'Белоусов', 'Анатольевич');";
             Open();
             cmd.ExecuteNonQuery();
             Close();
-        }
-
-        //TODO: Move this to class PasswordValidator
-        public static string ComparePasswords(string first, string second)
-        {
-            return first + " " + second;
-        }
+        }*/
     }
 }
