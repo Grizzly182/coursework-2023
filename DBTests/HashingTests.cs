@@ -8,7 +8,7 @@ namespace DBTests
         public void SaltGenerationTest()
         {
             const int LENGTH = 16;
-            Assert.Equal(LENGTH, SaltGenerator.GetSaltString().Length);
+            Assert.Equal(LENGTH, SaltGenerator.GenerateSaltString().Length);
         }
     }
 }
