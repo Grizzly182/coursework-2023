@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Marseille.Assets.Exceptions
+namespace HotelDB
 {
     internal class WrongLoginOrPasswordException : Exception
     {
