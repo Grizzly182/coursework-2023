@@ -38,7 +38,7 @@ namespace HotelDB
         /// </summary>
         /// <param name="login">Логин, введённый пользователем в окне входа.</param>
         /// <param name="password">Пароль, введённый пользователем в окне входа.</param>
-        /// <returns>Возвращает true, если верен, иначе - false.</returns>
+        /// <returns>Возвращает <c>true</c>, если введённый пароль верен, иначе - <c>false</c>.</returns>
         public static bool Login(string login, string password)
         {
             string passFromDB;

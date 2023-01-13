@@ -15,10 +15,7 @@ namespace HotelDB
         /// </summary>
         /// <param name="byteData">На вход идёт массив байтов.</param>
         /// <returns>Возвращает строковое представление массива байтов.</returns>
-        public static string GetString(byte[] byteData)
-        {
-            return Convert.ToBase64String(byteData);
-        }
+        public static string GetString(byte[] byteData) => Convert.ToBase64String(byteData);
 
         /// <summary>
         /// Вспомогательная функция, возвращающая массив байтов,
@@ -26,9 +23,6 @@ namespace HotelDB
         /// </summary>
         /// <param name="str">Функция принимает строку в качестве единственного аргумента.</param>
         /// <returns>Возвращает массив байтов, конвертированных из строки</returns>
-        public static byte[] GetBytes(string str)
-        {
-            return Encoding.ASCII.GetBytes(str);
-        }
+        public static byte[] GetBytes(string str) => Encoding.ASCII.GetBytes(str);
     }
 }

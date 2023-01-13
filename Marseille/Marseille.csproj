@@ -67,8 +67,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Assets\Exceptions\WrongLoginOrPasswordException.cs" />
+    <Compile Include="Assets\CurrentUser.cs" />
     <Compile Include="Assets\RolesEnum.cs" />
+    <Compile Include="Exceptions\WrongLoginOrPasswordException.cs" />
     <Compile Include="Forms\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>

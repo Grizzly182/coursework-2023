@@ -1,7 +1,10 @@
 ﻿using System;
 
-namespace Marseille.Assets.Exceptions
+namespace Marseille
 {
+    /// <summary>
+    ///
+    /// </summary>
     internal class WrongLoginOrPasswordException : Exception
     {
         public override string Message => "Неверный логин или пароль";
