@@ -2,6 +2,10 @@
 using System.Windows;
 using System.Windows.Media;
 using HotelDB;
+using System.Windows.Input;
+using System.Text;
+using System.Windows.Controls;
+using System.Drawing;
 
 namespace Marseille.Forms
 {
@@ -14,6 +18,13 @@ namespace Marseille.Forms
         {
             InitializeComponent();
             loginButton.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            loginBox.CommandBindings.Add(new CommandBinding(ApplicationCommands.Paste, OnPaste));
+            passwordBox.CommandBindings.Add(new CommandBinding(ApplicationCommands.Paste, OnPaste));
+        }
+
+        //TODO: Попробовать ограничить вставку текста не запрещая её полностью.
+        private void OnPaste(object sender, ExecutedRoutedEventArgs e)
+        {
         }
 
         private void loginButton_Initialized(object sender, EventArgs e)
@@ -26,6 +37,49 @@ namespace Marseille.Forms
             if (DBConnection.Login(loginBox.Text, passwordBox.Password))
             {
                 MessageBox.Show("ALL GOOD!!!!!");
+            }
+            else
+            {
+                Viewbox viewbox = new Viewbox();
+                Label loginOrPasswordErrorLabel = new Label();
+                loginOrPasswordErrorLabel.Content = "Неверный логин или пароль";
+                loginOrPasswordErrorLabel.Foreground = new SolidColorBrush(Colors.Red);
+                loginOrPasswordErrorLabel.FontFamily = new System.Windows.Media.FontFamily("Segoe UI Semibold");
+                loginOrPasswordErrorLabel.FontSize = 14;
+                viewbox.Child = loginOrPasswordErrorLabel;
+
+                bottomGrid.Children.Add(viewbox);
+                Grid.SetRow(viewbox, 1);
+            }
+        }
+
+        private void registrationTextBlock_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("all good");
+        }
+
+        private void loginBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            foreach (char ch in e.Text.ToLower())
+            {
+                if (!((int)ch >= 97 && (int)ch <= 122))
+                {
+                    e.Handled = true;
+                    return;
+                }
+            }
+        }
+
+        private void loginBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            string text = loginBox.Text.ToLower();
+            foreach (char ch in text)
+            {
+                if (!((int)ch >= 97 && (int)ch <= 122))
+                {
+                    e.Handled = true;
+                    return;
+                }
             }
         }
     }
