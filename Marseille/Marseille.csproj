@@ -68,6 +68,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Assets\CurrentUser.cs" />
+    <Compile Include="Assets\ColorChanger.cs" />
     <Compile Include="Assets\RolesEnum.cs" />
     <Compile Include="Exceptions\WrongLoginOrPasswordException.cs" />
     <Compile Include="Forms\LoginWindow.xaml.cs">
@@ -101,16 +102,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Forms\LoginWindowImage.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Forms\AppIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Forms\Монтажная область 2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Forms\Монтажная область 1.png" />
+    <Resource Include="resources\LoginWindowImage.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="resources\30 opaque.png">
