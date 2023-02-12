@@ -135,5 +135,11 @@
       <Name>HotelDB</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Forms\Монтажная область 9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Forms\Монтажная область 1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

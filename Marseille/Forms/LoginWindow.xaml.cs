@@ -62,7 +62,7 @@ namespace Marseille.Forms
         {
             foreach (char ch in e.Text.ToLower())
             {
-                if (!((int)ch >= 97 && (int)ch <= 122))
+                if (!(ch >= 97 && ch <= 122 || char.IsDigit(ch)))
                 {
                     e.Handled = true;
                     return;
@@ -70,12 +70,11 @@ namespace Marseille.Forms
             }
         }
 
-        private void loginBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        private void passwordBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            string text = loginBox.Text.ToLower();
-            foreach (char ch in text)
+            foreach (char ch in e.Text.ToLower())
             {
-                if (!((int)ch >= 97 && (int)ch <= 122))
+                if (!(ch >= 97 && ch <= 122 || char.IsDigit(ch)))
                 {
                     e.Handled = true;
                     return;

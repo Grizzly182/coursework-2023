@@ -9,25 +9,32 @@
     <Window.Effect>
         <DropShadowEffect />
     </Window.Effect>
-
-    <Grid x:Name="mainGrid">
-        <Grid.Resources>
-            <Style TargetType="{x:Type TextBox}">
-                <Style.Resources>
-                    <Style TargetType="{x:Type Border}">
-                        <Setter Property="CornerRadius" Value="10" />
-                    </Style>
-                </Style.Resources>
-            </Style>
-            <Style TargetType="{x:Type PasswordBox}">
-                <Style.Resources>
-                    <Style TargetType="{x:Type Border}">
-                        <Setter Property="CornerRadius" Value="10" />
-                    </Style>
-                </Style.Resources>
-            </Style>
-        </Grid.Resources>
+    <Window.Resources>
+        <Style TargetType="{x:Type TextBox}">
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10" />
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style TargetType="{x:Type PasswordBox}">
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10" />
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style TargetType="{x:Type Button}">
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5" />
+                </Style>
+            </Style.Resources>
+        </Style>
+    </Window.Resources>
+    <Grid x:Name="mainGrid" Background="#B59F7F">
         <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"></RowDefinition>
             <RowDefinition Height="0.3*"></RowDefinition>
             <RowDefinition Height="0.4*"></RowDefinition>
             <RowDefinition Height="0.4*"></RowDefinition>
@@ -39,57 +46,44 @@
             <ColumnDefinition Width="0.5*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="1" Grid.RowSpan="5">
+        <Grid Grid.Column="1" Grid.RowSpan="6">
             <Image x:Name="TitleImage" Grid.Column="1" Grid.RowSpan="5" Source="/resources/LoginWindowImage.jpg" Stretch="UniformToFill" StretchDirection="Both" HorizontalAlignment="Right">
                 <Image.Effect>
                     <BlurEffect />
                 </Image.Effect>
             </Image>
-            <Canvas x:Name="TitleImageColor" Grid.Column="1" Grid.RowSpan="5" Background="#994446DE" />
-            <Image Source="/resources/30 opaque.png" Stretch="Uniform" Margin="70 0"></Image>
+            <Image Source="/Forms/Монтажная область 1.png" Stretch="Uniform" Margin="70 0" HorizontalAlignment="Center"></Image>
         </Grid>
 
-        <Grid x:Name="titleGrid">
+        <Grid x:Name="titleGrid" Grid.Row="1">
             <Viewbox  Grid.Row="1" Margin="0 0">
-                <Label x:Name="headerText" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Impact" Content="Marseille" FontSize="30" Foreground="#FF5759EA" HorizontalContentAlignment="Center" />
+                <Image Source="/Forms/Монтажная область 9.png" Stretch="Uniform" HorizontalAlignment="Center" />
             </Viewbox>
         </Grid>
-        <Grid x:Name="loginBoxGrid" Grid.Column="0" Grid.Row="1">
+        <Grid x:Name="loginBoxGrid" Grid.Column="0" Grid.Row="2">
             <Border Grid.Row="1" Margin="0 15">
                 <Viewbox Stretch="Uniform" HorizontalAlignment="Center">
-                    <TextBox x:Name="loginBox" BorderThickness="4" FontSize="18" BorderBrush="#FF5759EA" Width="200" FontFamily="Segoe UI Semibold" PreviewTextInput="loginBox_PreviewTextInput" TextChanged="loginBox_TextChanged"></TextBox>
+                    <TextBox x:Name="loginBox" FontSize="18" BorderThickness="4" BorderBrush="#997A4D" Width="200" FontFamily="Segoe UI Semibold" PreviewTextInput="loginBox_PreviewTextInput" Background="#FFB59F7F" />
                 </Viewbox>
             </Border>
         </Grid>
-        <Grid x:Name="passwordBoxGrid" Grid.Column="0" Grid.Row="2">
+        <Grid x:Name="passwordBoxGrid" Grid.Column="0" Grid.Row="3">
             <Border Grid.Row="2" Margin="0 15">
                 <Viewbox Stretch="Uniform" HorizontalAlignment="Center">
-                    <PasswordBox x:Name="passwordBox" BorderThickness="4" FontSize="18" BorderBrush="#FF5759EA" Width="200" FontFamily="Segoe UI Semibold">
-                        <PasswordBox.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10" />
-                            </Style>
-                        </PasswordBox.Resources>
-                    </PasswordBox>
+                    <PasswordBox x:Name="passwordBox" BorderThickness="4" FontSize="18" BorderBrush="#997A4D" Width="200" FontFamily="Segoe UI Semibold" Background="#FFB59F7F" PreviewTextInput="passwordBox_PreviewTextInput" />
                 </Viewbox>
             </Border>
         </Grid>
-        <Grid x:Name="loginButtonGrid" Grid.Column="0" Grid.Row="3">
-            <Border Grid.Row="3" Grid.Column="0" Margin="0 15" BorderBrush="Transparent">
+        <Grid x:Name="loginButtonGrid" Grid.Column="0" Grid.Row="4">
+            <Border Grid.Row="3" Grid.Column="0" Margin="0 15">
                 <Viewbox Stretch="Uniform" HorizontalAlignment="Center">
-                    <Button x:Name="loginButton" Grid.Row="3" IsDefault="True" FontFamily="Segoe UI Semibold" Width="125" Background="#FF5759EA" BorderBrush="Transparent" Foreground="White" Initialized="loginButton_Initialized" Click="loginButton_Click" RenderTransformOrigin="0.5,0.5">
-                        <Button.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="3" />
-                                <Setter Property="BorderBrush" Value="{x:Null}" />
-                            </Style>
-                        </Button.Resources>
+                    <Button BorderThickness="0" x:Name="loginButton" Grid.Row="3" IsDefault="True" FontFamily="Segoe UI Semibold" Width="125" Background="#997A4D" Foreground="White" Initialized="loginButton_Initialized" Click="loginButton_Click" RenderTransformOrigin="0.5,0.5">
                         Войти
                     </Button>
                 </Viewbox>
             </Border>
         </Grid>
-        <Grid x:Name="bottomGrid" Grid.Row="4" ShowGridLines="True">
+        <Grid x:Name="bottomGrid" Grid.Row="5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"></RowDefinition>
                 <RowDefinition></RowDefinition>
@@ -99,7 +93,7 @@
             </Grid.RowDefinitions>
             <Viewbox Grid.Row="0">
                 <Label Foreground="#FF5759EA" FontWeight="SemiBold">
-                    <TextBlock x:Name="registrationTextBlock"><Hyperlink Click="registrationTextBlock_Click">Зарегистрироваться</Hyperlink></TextBlock>
+                    <TextBlock x:Name="registrationTextBlock"><Hyperlink Click="registrationTextBlock_Click" TextDecorations="None">Регистрация</Hyperlink></TextBlock>
                 </Label>
             </Viewbox>
         </Grid>

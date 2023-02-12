@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marseille", "Marseille.csproj", "{0AD91A89-E440-4B1E-83AD-80670930128A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotelify", "Hotelify.csproj", "{0AD91A89-E440-4B1E-83AD-80670930128A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelDB", "..\HotelDB\HotelDB.csproj", "{1EA12576-1A61-4C0E-B379-A7690502CB86}"
 EndProject
