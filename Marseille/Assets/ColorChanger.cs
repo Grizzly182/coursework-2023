@@ -9,7 +9,7 @@ namespace Marseille
         Background
     }
 
-    public static class ColorChanger
+    public class ColorChanger
     {
         public static SolidColorBrush ChangeColorTo(ProjectColors color)
         {
