@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using System.Collections.Generic;
 
 namespace HotelDB
 {
@@ -7,10 +8,16 @@ namespace HotelDB
     /// </summary>
     public static class DBConnection
     {
+        private static string _server = "localhost";
+        private static string _port = "3306";
+        private static string _userId = "root";
+        private static string _password = "root";
+        private static string _database = "marseille";
+
         /// <summary>
         /// Измените содержание этой строки чтобы подключиться к другой базе данных MySql
         /// </summary>
-        private static readonly string connectionString = "server=localhost; port=3306; user id=root; password=root; database=marseille";
+        private static readonly string connectionString = $"server={_server}; port={_port}; userid={_userId}; password={_password}; database={_database}";
 
         /// <summary>
         /// Статическое поле, является объект класса MySqlConnection, является подключением
@@ -31,6 +38,24 @@ namespace HotelDB
         public static void Close()
         {
             connection.Close();
+        }
+
+        private static MySqlCommand CreateCommand(string query)
+        {
+            MySqlCommand cmd = connection.CreateCommand();
+            cmd.CommandText = query;
+            return cmd;
+        }
+
+        private static MySqlCommand CreateCommandWithParameters(string query, Dictionary<string, string> parameters)
+        {
+            MySqlCommand cmd = connection.CreateCommand();
+            cmd.CommandText = query;
+            foreach (KeyValuePair<string, string> parameter in parameters)
+            {
+                cmd.Parameters.AddWithValue(parameter.Key, parameter.Value);
+            }
+            return cmd;
         }
 
         /// <summary>
@@ -60,15 +85,17 @@ namespace HotelDB
         private static string GetPasswordHashAndSaltFromDB(string login, out string salt)
         {
             //Пишем запрос в базу данных
-            MySqlCommand cmd = connection.CreateCommand();
-            cmd.CommandText = $"SELECT * FROM `users` WHERE `login` = @login";
-            cmd.Parameters.AddWithValue("@login", login);
+            MySqlCommand cmd = CreateCommandWithParameters("SELECT `password`,`salt` FROM `users` WHERE `login` = @login", new Dictionary<string, string> { { "@login", login } });
+
             string password = "";
+
             salt = "";
 
             //Читаем из БД
             Open();
+
             using (MySqlDataReader reader = cmd.ExecuteReader())
+
             {
                 while (reader.Read())
                 {
@@ -81,18 +108,54 @@ namespace HotelDB
             return password;
         }
 
-        //TODO: Delete this later
-        /*public static void RegisterAdmin(string password)
+        //TODO: Comment this
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="login"></param>
+        /// <param name="name"></param>
+        /// <param name="surname"></param>
+        /// <param name="patronymic"></param>
+        /// <param name="role"></param>
+        public static void GetUserData(string login, out string name, out string surname, out string patronymic, out int role)
         {
-            MySqlCommand cmd = connection.CreateCommand();
-            PasswordManager passwordManager = new PasswordManager();
-            string salt = null;
-            string hashPassword = passwordManager.GeneratePasswordHash(password, out salt);
+            MySqlCommand cmd = CreateCommandWithParameters("Select `name`,`surname`,`patronymic`,`role_id` from `users` where `login` = @login;",
+                new Dictionary<string, string> { { "@login", login } });
 
-            cmd.CommandText = $"INSERT INTO marseille.users (`login`, `password`, `salt`, `name`, `surname`, `patronymic`) VALUES ('admin', '{hashPassword}', '{salt}', 'Михаил', 'Белоусов', 'Анатольевич');";
+            name = surname = patronymic = string.Empty;
+            role = 1;
+
             Open();
-            cmd.ExecuteNonQuery();
+
+            using (MySqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    name = reader.GetString("name");
+                    surname = reader.GetString("surname");
+                    patronymic = reader.GetString("patronymic");
+                    role = reader.GetInt32("role_id");
+                }
+            }
+
             Close();
-        }*/
+        }
+
+        //TODO: Delete this later
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="password"></param>
+        //public static void RegisterAdmin(string password)
+        //{
+        //    MySqlCommand cmd = connection.CreateCommand();
+        //    PasswordManager passwordManager = new PasswordManager();
+        //    string hashPassword = passwordManager.GeneratePasswordHash(password, out string salt);
+
+        //    cmd.CommandText = $"INSERT INTO marseille.users (`login`, `password`, `salt`, `name`, `surname`, `patronymic`, `role_id`) VALUES ('admin', '{hashPassword}', '{salt}', 'Михаил', 'Белоусов', 'Анатольевич', 1);";
+        //    Open();
+        //    cmd.ExecuteNonQuery();
+        //    Close();
+        //}
     }
 }
