@@ -14,9 +14,9 @@ namespace HotelDB
 
         /// <summary>
         /// Размер массива байтов
-        /// </summary>
         /// Значение по умолчанию:
         /// <value>12</value>
+        /// </summary>
         private const int SALT_SIZE = 12; //при значении 12 итоговая длина хэша равна 16
 
         /// <summary>
