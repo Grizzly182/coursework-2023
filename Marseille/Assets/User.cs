@@ -4,7 +4,7 @@
     /// Статический класс, описывающий текущего пользователя,
     /// совершившего вход или регистрацию.
     /// </summary>
-    public static class CurrentUser
+    public static class User
     {
         /// <summary>
         /// Логин пользователя.
