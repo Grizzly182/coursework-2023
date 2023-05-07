@@ -4,8 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Marseille"
+        xmlns:convert="clr-namespace:Marseille.Converters"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="450" Width="800" Icon="/Resources/white.png" MinHeight="450" MinWidth="800">
+        Title="Авторизация" Height="450" Width="800" Icon="/Resources/white.png" MinHeight="450" MinWidth="800">
     <Window.Effect>
         <DropShadowEffect />
     </Window.Effect>
@@ -32,14 +33,13 @@
             </Style.Resources>
         </Style>
     </Window.Resources>
-    <Grid x:Name="mainGrid" Background="#B59F7F">
+    <Grid x:Name="mainGrid" Background="White">
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.1*"></RowDefinition>
-            <RowDefinition Height="0.3*"></RowDefinition>
-            <RowDefinition Height="0.4*"></RowDefinition>
-            <RowDefinition Height="0.4*"></RowDefinition>
-            <RowDefinition Height="0.4*"></RowDefinition>
-            <RowDefinition Height="0.9*"></RowDefinition>
+            <RowDefinition Height="0.4*" />
+            <RowDefinition Height="0.4*" />
+            <RowDefinition Height="0.4*" />
+            <RowDefinition Height="0.4*" />
+            <RowDefinition Height="0.4*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -52,49 +52,36 @@
                     <BlurEffect />
                 </Image.Effect>
             </Image>
-            <Image Source="/Forms/Монтажная область 1.png" Stretch="Uniform" Margin="70 0" HorizontalAlignment="Center"></Image>
+            <Image Source="/resources/white.png" Stretch="Uniform" Margin="70 0" HorizontalAlignment="Center"></Image>
         </Grid>
 
-        <Grid x:Name="titleGrid" Grid.Row="1">
-            <Viewbox  Grid.Row="1" Margin="0 0">
-                <Image Source="/Forms/Монтажная область 9.png" Stretch="Uniform" HorizontalAlignment="Center" />
+        <Grid x:Name="titleGrid" Grid.Row="0" Grid.Column="0">
+            <Viewbox Stretch="Uniform" HorizontalAlignment="Center" Margin="50 20" MaxWidth="800" MaxHeight="200">
+                <TextBlock x:Name="titleTextBlock" FontFamily="Segoe UI Bold" Foreground="#5759ea">Marseille</TextBlock>
             </Viewbox>
         </Grid>
-        <Grid x:Name="loginBoxGrid" Grid.Column="0" Grid.Row="2">
-            <Border Grid.Row="1" Margin="0 15">
-                <Viewbox Stretch="Uniform" HorizontalAlignment="Center">
-                    <TextBox x:Name="loginBox" FontSize="18" BorderThickness="4" BorderBrush="#997A4D" Width="200" FontFamily="Segoe UI Semibold" PreviewTextInput="loginBox_PreviewTextInput" Background="#FFB59F7F" />
-                </Viewbox>
-            </Border>
+
+        <Grid x:Name="loginBoxGrid" Grid.Column="0" Grid.Row="1">
+            <Viewbox Stretch="Uniform" HorizontalAlignment="Center" Margin="50 20" MaxWidth="800" MaxHeight="200">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock x:Name="loginPlceholder" MinWidth="60" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5 0" FontFamily="Segoe UI Semibold" FontSize="16">Логин</TextBlock>
+                    <TextBox x:Name="loginBox" FontSize="18" BorderThickness="4" BorderBrush="#5759ea" Width="200" FontFamily="Segoe UI Semibold" PreviewTextInput="loginBox_PreviewTextInput" />
+                </StackPanel>
+            </Viewbox>
         </Grid>
-        <Grid x:Name="passwordBoxGrid" Grid.Column="0" Grid.Row="3">
-            <Border Grid.Row="2" Margin="0 15">
-                <Viewbox Stretch="Uniform" HorizontalAlignment="Center">
-                    <PasswordBox x:Name="passwordBox" BorderThickness="4" FontSize="18" BorderBrush="#997A4D" Width="200" FontFamily="Segoe UI Semibold" Background="#FFB59F7F" PreviewTextInput="passwordBox_PreviewTextInput" />
-                </Viewbox>
-            </Border>
+        <Grid x:Name="passwordBoxGrid" Grid.Column="0" Grid.Row="2">
+            <Viewbox Stretch="Uniform" HorizontalAlignment="Center" Margin="50 20" MaxWidth="800" MaxHeight="200">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock x:Name="passwordPlaceholder" MinWidth="60" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5 0" FontFamily="Segoe UI Semibold" FontSize="16">Пароль</TextBlock>
+                    <PasswordBox x:Name="passwordBox" BorderThickness="4" FontSize="18" BorderBrush="#5759ea" Width="200" FontFamily="Segoe UI Semibold" PreviewTextInput="passwordBox_PreviewTextInput" PasswordChanged="passwordBox_PasswordChanged" />
+                </StackPanel>
+            </Viewbox>
         </Grid>
-        <Grid x:Name="loginButtonGrid" Grid.Column="0" Grid.Row="4">
-            <Border Grid.Row="3" Grid.Column="0" Margin="0 15">
-                <Viewbox Stretch="Uniform" HorizontalAlignment="Center">
-                    <Button BorderThickness="0" x:Name="loginButton" Grid.Row="3" IsDefault="True" FontFamily="Segoe UI Semibold" Width="125" Background="#997A4D" Foreground="White" Initialized="loginButton_Initialized" Click="loginButton_Click" RenderTransformOrigin="0.5,0.5">
-                        Войти
-                    </Button>
-                </Viewbox>
-            </Border>
-        </Grid>
-        <Grid x:Name="bottomGrid" Grid.Row="5">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*"></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-            </Grid.RowDefinitions>
-            <Viewbox Grid.Row="0">
-                <Label Foreground="#FF5759EA" FontWeight="SemiBold">
-                    <TextBlock x:Name="registrationTextBlock"><Hyperlink Click="registrationTextBlock_Click" TextDecorations="None">Регистрация</Hyperlink></TextBlock>
-                </Label>
+        <Grid x:Name="loginButtonGrid" Grid.Column="0" Grid.Row="3">
+            <Viewbox Stretch="Uniform" HorizontalAlignment="Center" Margin="50 20" MaxWidth="800" MaxHeight="200">
+                <Button BorderThickness="0" x:Name="loginButton" Grid.Row="3" IsDefault="True" FontFamily="Segoe UI Semibold" Width="125" Background="#5759ea" Foreground="White" Initialized="loginButton_Initialized" Click="loginButton_Click" RenderTransformOrigin="0.5,0.5">
+                    Войти
+                </Button>
             </Viewbox>
         </Grid>
     </Grid>

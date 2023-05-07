@@ -3,9 +3,7 @@ using System.Windows;
 using System.Windows.Media;
 using HotelDB;
 using System.Windows.Input;
-using System.Text;
-using System.Windows.Controls;
-using System.Drawing;
+using Marseille.Assets;
 
 namespace Marseille.Forms
 {
@@ -17,12 +15,11 @@ namespace Marseille.Forms
         public LoginWindow()
         {
             InitializeComponent();
-            loginButton.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            //loginButton.BorderBrush = new SolidColorBrush(Colors.Transparent);
             loginBox.CommandBindings.Add(new CommandBinding(ApplicationCommands.Paste, OnPaste));
             passwordBox.CommandBindings.Add(new CommandBinding(ApplicationCommands.Paste, OnPaste));
         }
 
-        //TODO: Попробовать ограничить вставку текста не запрещая её полностью.
         private void OnPaste(object sender, ExecutedRoutedEventArgs e)
         {
         }
@@ -34,22 +31,27 @@ namespace Marseille.Forms
 
         private void loginButton_Click(object sender, RoutedEventArgs e)
         {
-            if (DBConnection.Login(loginBox.Text, passwordBox.Password))
+            string login = loginBox.Text;
+            string password = passwordBox.Password;
+            if (DBConnection.Login(login, password))
             {
-                MessageBox.Show("ALL GOOD!!!!!");
+                try
+                {
+                    DBConnection.GetUserData(login, out string name, out string surname, out string patronymic, out int role);
+                    User.SetLoggedUser(login, name, surname, patronymic, (Role)role);
+                    WindowsController.OpenWindow(this, new AdminWindow());
+                    MessageBox.Show(User.Login + User.Name + User.Patronymic + User.Surname + User.UserRole.ToString());
+                }
+                catch (Exception ex)
+                {
+                    ErrorMessagesProider.ShowError("Произошла ошибка при входе\n" + ex.Message);
+                }
             }
             else
             {
-                Viewbox viewbox = new Viewbox();
-                Label loginOrPasswordErrorLabel = new Label();
-                loginOrPasswordErrorLabel.Content = "Неверный логин или пароль";
-                loginOrPasswordErrorLabel.Foreground = new SolidColorBrush(Colors.Red);
-                loginOrPasswordErrorLabel.FontFamily = new System.Windows.Media.FontFamily("Segoe UI Semibold");
-                loginOrPasswordErrorLabel.FontSize = 14;
-                viewbox.Child = loginOrPasswordErrorLabel;
-
-                bottomGrid.Children.Add(viewbox);
-                Grid.SetRow(viewbox, 1);
+                loginBox.Clear();
+                passwordBox.Clear();
+                ErrorMessagesProider.ShowError("Неверные логин или пароль.");
             }
         }
 
@@ -60,26 +62,42 @@ namespace Marseille.Forms
 
         private void loginBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            foreach (char ch in e.Text.ToLower())
+            if (!IsEnglishText(e.Text))
             {
-                if (!(ch >= 97 && ch <= 122 || char.IsDigit(ch)))
-                {
-                    e.Handled = true;
-                    return;
-                }
+                e.Handled = true;
+                return;
             }
         }
 
         private void passwordBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            foreach (char ch in e.Text.ToLower())
+            if (!IsEnglishText(e.Text))
+            {
+                e.Handled = true;
+                return;
+            }
+        }
+
+        /// <summary>
+        /// Проверяет всю строку на наличие букв, отличающихся от английского алфавита.
+        /// </summary>
+        /// <param name="text">Строка передаваемая на проверку.</param>
+        /// <returns>Возвращает <see langword="true"/> если в строке все буквы
+        /// являются частью английского алфавита, иначе возвращает <see langword="false"/></returns>
+        private bool IsEnglishText(string text)
+        {
+            foreach (char ch in text.ToLower())
             {
                 if (!(ch >= 97 && ch <= 122 || char.IsDigit(ch)))
                 {
-                    e.Handled = true;
-                    return;
+                    return false;
                 }
             }
+            return true;
+        }
+
+        private void passwordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
         }
     }
 }
