@@ -3,17 +3,130 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Marseille.Forms"
+        xmlns:local="clr-namespace:Marseille"
         mc:Ignorable="d"
-        Title="AdminWindow" Height="450" Width="800">
+        Title="AdminWindow" Height="450" Width="800" MinHeight="450" MinWidth="800" Closed="adminWindow_Closed"
+        x:Name="adminWindow" Closing="adminWindow_Closing">
+
+    <Window.Resources>
+        <Style  TargetType="{x:Type TabControl}">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabControl}">
+                        <DockPanel KeyboardNavigation.TabNavigation="Local" LastChildFill="True">
+                            <TabPanel DockPanel.Dock="{TemplateBinding TabStripPlacement}"
+                        Name="HeaderPanel"
+                        Grid.Row="0"
+                        Panel.ZIndex="1"
+                        Margin="0,0,4,1"
+                        IsItemsHost="True"
+                        KeyboardNavigation.TabIndex="1"
+                        Background="#bcbdf7" />
+                            <Border
+                        Name="Border"
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        BorderThickness="1"
+                        CornerRadius="2">
+                                <ContentPresenter
+                            ContentSource="SelectedContent" />
+                            </Border>
+                        </DockPanel>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Foreground" Value="Black" />
+                                <Setter TargetName="Border" Property="BorderBrush" Value="DarkGray" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="{x:Type Button}">
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8" />
+                    <Setter Property="BorderThickness" Value="5" />
+                </Style>
+            </Style.Resources>
+        </Style>
+    </Window.Resources>
+
     <Grid x:Name="mainGrid">
         <Grid.ColumnDefinitions>
         </Grid.ColumnDefinitions>
-        <TabControl TabStripPlacement="Left">
-            <TabItem Height="30">
-                <Label >dsadsddsadasdasd</Label>
+        <Grid.RowDefinitions>
+            <RowDefinition  Height="40" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="titleGrid" Background="#5759ea">
+            <Viewbox>
+                <TextBlock x:Name="titleTextBlock" FontFamily="Segoe UI Semibold" Foreground="White">
+                    Брони
+                </TextBlock>
+            </Viewbox>
+
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5">
+                <Button x:Name="logoutButton" Background="Transparent" BorderBrush="Transparent" Margin="0 0 20 0" ToolTip="Выйти из системы" Click="logoutButton_Click">
+                    <Image x:Name="logoutButtonIcon" Source="/resources/Icons/logout-white.png"></Image>
+                </Button>
+                <TextBlock x:Name="fullNameTextBlock" TextAlignment="Center" VerticalAlignment="Center" Foreground="White"></TextBlock>
+            </StackPanel>
+        </Grid>
+
+        <!-- #region TabControl -->
+        <TabControl x:Name="adminTabControl" TabStripPlacement="Left" Grid.Row="1" VerticalAlignment="Stretch">
+            <!--#region Schedule Tab-->
+            <TabItem Height="45" Width="60" ToolTip="Брони">
+                <TabItem.Header>
+                    <Image Source="/resources/Icons/schedule.png" Margin="6 3 3 3" />
+                </TabItem.Header>
+                <Grid x:Name="scheduleGrid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition  Height="50" />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid  x:Name="scheduleToolsGrid" Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250" />
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="250" />
+                        </Grid.ColumnDefinitions>
+                        <Viewbox  Grid.Column="0" Width="200" Stretch="Uniform" HorizontalAlignment="Left" Margin="5 10">
+                            <ComboBox x:Name="scheduleStatusComboBox" Grid.Column="0" BorderThickness="0">
+                                <ComboBoxItem IsSelected="True" Content="Ожидание оплаты" />
+                            </ComboBox>
+                        </Viewbox>
+                        <Viewbox Grid.Column="2" Width="200" Stretch="Uniform" HorizontalAlignment="Stretch" Margin="5">
+                            <Button x:Name="addReservationButton" Background="#5759ea" Width="125" Foreground="White" BorderBrush="Transparent" BorderThickness="0" FontFamily="Segoe UI Bold">
+                                Новая бронь
+                            </Button>
+                        </Viewbox>
+                    </Grid>
+                    <DataGrid Grid.RowSpan="2" Grid.Row="1">
+                        <DataGridCell Content="sadasd"></DataGridCell>
+                        <DataGridCell>sadasdasdsd23</DataGridCell>
+                    </DataGrid>
+                </Grid>
             </TabItem>
-            <TabItem Header="30"></TabItem>
+            <!-- #endregion ScheduleTab -->
+
+            <!--#region StatsTab-->
+            <TabItem Height="45" Width="60" ToolTip="Отчёты">
+                <TabItem.Header>
+                    <Image Source="/resources/Icons/statistics.png" Margin="6 3 3 3" />
+                </TabItem.Header>
+            </TabItem>
+            <!--#endregion StatsTab-->
         </TabControl>
+        <!-- #endregion TabControl -->
     </Grid>
 </Window>

@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Marseille.Assets;
+using System;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Marseille.Forms
 {
@@ -19,9 +9,36 @@ namespace Marseille.Forms
     /// </summary>
     public partial class AdminWindow : Window
     {
+        private bool _logoutClicked = false;
+
         public AdminWindow()
         {
             InitializeComponent();
+            fullNameTextBlock.Text = User.CurrentUser.ShortFullName;
+        }
+
+        private void adminWindow_Closed(object sender, EventArgs e)
+        {
+            if (_logoutClicked)
+            {
+                System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+            }
+            App.Current.Shutdown();
+        }
+
+        private void adminWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (ErrorMessagesProider.ShowWarning("Вы действительно хотите выйти?") != MessageBoxResult.OK)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void logoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            User.LogOut();
+            _logoutClicked = true;
+            Close();
         }
     }
 }
