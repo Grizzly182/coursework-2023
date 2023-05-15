@@ -4,7 +4,7 @@ namespace Marseille.Assets
 {
     //TODO: Comment this
     /// <summary>
-    ///
+    /// Вспомогательный класс для быстрой обработки ошибок
     /// </summary>
     internal static class ErrorMessagesProider
     {
@@ -15,7 +15,7 @@ namespace Marseille.Assets
 
         public static MessageBoxResult ShowWarning(string message)
         {
-            return MessageBox.Show(message, "Предупреждение", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            return MessageBox.Show(message, "Предупреждение.", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
         }
     }
 }
