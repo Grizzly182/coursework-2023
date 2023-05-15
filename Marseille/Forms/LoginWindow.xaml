@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Marseille"
-        xmlns:convert="clr-namespace:Marseille.Converters"
         mc:Ignorable="d"
         Title="Авторизация" Height="450" Width="800" Icon="/Resources/white.png" MinHeight="450" MinWidth="800">
     <Window.Effect>
@@ -32,6 +31,13 @@
                 </Style>
             </Style.Resources>
         </Style>
+        <Style TargetType="{x:Type CheckBox}">
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="500" />
+                </Style>
+            </Style.Resources>
+        </Style>
     </Window.Resources>
     <Grid x:Name="mainGrid" Background="White">
         <Grid.RowDefinitions>
@@ -39,6 +45,7 @@
             <RowDefinition Height="0.4*" />
             <RowDefinition Height="0.4*" />
             <RowDefinition Height="0.4*" />
+            <RowDefinition Height="0.15*" />
             <RowDefinition Height="0.4*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -64,7 +71,7 @@
         <Grid x:Name="loginBoxGrid" Grid.Column="0" Grid.Row="1">
             <Viewbox Stretch="Uniform" HorizontalAlignment="Center" Margin="50 20" MaxWidth="800" MaxHeight="200">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock x:Name="loginPlceholder" MinWidth="60" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5 0" FontFamily="Segoe UI Semibold" FontSize="16">Логин</TextBlock>
+                    <TextBlock x:Name="loginPlceholder" MinWidth="60" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5 0" FontFamily="Segoe UI Semibold" FontSize="16" Foreground="Gray">Логин</TextBlock>
                     <TextBox x:Name="loginBox" FontSize="18" BorderThickness="4" BorderBrush="#5759ea" Width="200" FontFamily="Segoe UI Semibold" PreviewTextInput="loginBox_PreviewTextInput" />
                 </StackPanel>
             </Viewbox>
@@ -72,7 +79,7 @@
         <Grid x:Name="passwordBoxGrid" Grid.Column="0" Grid.Row="2">
             <Viewbox Stretch="Uniform" HorizontalAlignment="Center" Margin="50 20" MaxWidth="800" MaxHeight="200">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock x:Name="passwordPlaceholder" MinWidth="60" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5 0" FontFamily="Segoe UI Semibold" FontSize="16">Пароль</TextBlock>
+                    <TextBlock x:Name="passwordPlaceholder" MinWidth="60" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5 0" FontFamily="Segoe UI Semibold" FontSize="16" Foreground="Gray">Пароль</TextBlock>
                     <PasswordBox x:Name="passwordBox" BorderThickness="4" FontSize="18" BorderBrush="#5759ea" Width="200" FontFamily="Segoe UI Semibold" PreviewTextInput="passwordBox_PreviewTextInput" PasswordChanged="passwordBox_PasswordChanged" />
                 </StackPanel>
             </Viewbox>
@@ -82,6 +89,11 @@
                 <Button BorderThickness="0" x:Name="loginButton" Grid.Row="3" IsDefault="True" FontFamily="Segoe UI Semibold" Width="125" Background="#5759ea" Foreground="White" Initialized="loginButton_Initialized" Click="loginButton_Click" RenderTransformOrigin="0.5,0.5">
                     Войти
                 </Button>
+            </Viewbox>
+        </Grid>
+        <Grid x:Name="rememberMeGrid" Grid.Column="0" Grid.Row="4">
+            <Viewbox Stretch="Uniform" HorizontalAlignment="Center" Margin="5" MaxWidth="800" MaxHeight="200">
+                <CheckBox x:Name="rememberMeCheckBox">Запомнить меня</CheckBox>
             </Viewbox>
         </Grid>
     </Grid>
