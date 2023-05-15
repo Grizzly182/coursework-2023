@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Marseille\Hotelify.csproj" />
+    <ProjectReference Include="..\Marseille\Marseille.csproj" />
   </ItemGroup>
 
 </Project>

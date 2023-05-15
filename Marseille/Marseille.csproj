@@ -68,13 +68,60 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=4.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>packages\Extended.Wpf.Toolkit.4.5.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=4.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>packages\Extended.Wpf.Toolkit.4.5.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=4.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>packages\Extended.Wpf.Toolkit.4.5.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=4.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>packages\Extended.Wpf.Toolkit.4.5.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=4.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>packages\Extended.Wpf.Toolkit.4.5.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Custom Controls\ReservationControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Custom Controls\RoomControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Custom Controls\UsersControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Forms\AdminWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\Rooms\RoomEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\Rooms\CreateRoomWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\Rooms\FeaturesManagementWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\Users\EditUserWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\Users\CreateUserWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -86,21 +133,58 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Assets\Client.cs" />
+    <Compile Include="Assets\IsolatedStorageController.cs" />
     <Compile Include="Assets\ErrorMessagesProider.cs" />
+    <Compile Include="Assets\Reservation.cs" />
+    <Compile Include="Assets\Room.cs" />
+    <Compile Include="Assets\Enum\RoomStatus.cs" />
+    <Compile Include="Assets\RoomFeature.cs" />
     <Compile Include="Assets\User.cs" />
     <Compile Include="Assets\ColorChanger.cs" />
-    <Compile Include="Assets\RolesEnum.cs" />
+    <Compile Include="Assets\Enum\RolesEnum.cs" />
+    <Compile Include="Assets\Utility.cs" />
     <Compile Include="Assets\WindowsController.cs" />
-    <Compile Include="Converters\ColorToSolidColorBrushValueConverter.cs" />
+    <Compile Include="Custom Controls\ReservationControl.xaml.cs">
+      <DependentUpon>ReservationControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Custom Controls\RoomControl.xaml.cs">
+      <DependentUpon>RoomControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Custom Controls\UsersControl.xaml.cs">
+      <DependentUpon>UsersControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Exceptions\WrongLoginOrPasswordException.cs" />
     <Compile Include="Forms\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Rooms\RoomEditWindow.xaml.cs">
+      <DependentUpon>RoomEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Rooms\CreateRoomWindow.xaml.cs">
+      <DependentUpon>CreateRoomWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Rooms\FeaturesManagementWindow.xaml.cs">
+      <DependentUpon>FeaturesManagementWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Users\EditUserWindow.xaml.cs">
+      <DependentUpon>EditUserWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Users\CreateUserWindow.xaml.cs">
+      <DependentUpon>CreateUserWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Forms\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Forms\ManagerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\ManagerWindow.xaml.cs">
+      <DependentUpon>ManagerWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -162,10 +246,21 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Forms\Монтажная область 9.png" />
+    <Resource Include="resources\Icons\logout-white.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Forms\Монтажная область 1.png" />
+    <Resource Include="resources\Icons\schedule.png" />
+    <Resource Include="resources\Icons\statistics.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\Icons\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\Icons\room.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\Icons\delete.png" />
+    <Resource Include="resources\Icons\edit.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
