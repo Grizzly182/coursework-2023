@@ -30,3 +30,45 @@ C:\CourseWork\Marseille\bin\Debug\MySql.Data.xml
 C:\CourseWork\Marseille\obj\Debug\Marseille.exe.config
 C:\CourseWork\Marseille\obj\Debug\Marseille.csproj.CopyComplete
 C:\CourseWork\Marseille\bin\Debug\HotelDB.xml
+C:\CourseWork\Marseille\bin\Debug\EntityFramework.dll
+C:\CourseWork\Marseille\bin\Debug\EntityFramework.SqlServer.dll
+C:\CourseWork\Marseille\bin\Debug\EntityFramework.xml
+C:\CourseWork\Marseille\bin\Debug\EntityFramework.SqlServer.xml
+C:\CourseWork\Marseille\obj\Debug\Custom Controls\ReservationControl.g.cs
+C:\CourseWork\Marseille\obj\Debug\Custom Controls\UsersControl.g.cs
+C:\CourseWork\Marseille\obj\Debug\Forms\AdminWindow.g.cs
+C:\CourseWork\Marseille\obj\Debug\Forms\ManagerWindow.g.cs
+C:\CourseWork\Marseille\obj\Debug\Custom Controls\ReservationControl.baml
+C:\CourseWork\Marseille\obj\Debug\Custom Controls\UsersControl.baml
+C:\CourseWork\Marseille\obj\Debug\Forms\AdminWindow.baml
+C:\CourseWork\Marseille\obj\Debug\Forms\ManagerWindow.baml
+C:\CourseWork\Marseille\obj\Debug\Forms\Users\EditUserWindow.g.cs
+C:\CourseWork\Marseille\obj\Debug\Forms\Users\CreateUserWindow.g.cs
+C:\CourseWork\Marseille\obj\Debug\Forms\Users\EditUserWindow.baml
+C:\CourseWork\Marseille\obj\Debug\Forms\Users\CreateUserWindow.baml
+C:\CourseWork\Marseille\obj\Debug\Custom Controls\RoomControl.g.cs
+C:\CourseWork\Marseille\obj\Debug\Custom Controls\RoomControl.baml
+C:\CourseWork\Marseille\obj\Debug\Forms\Rooms\CreateRoomWindow.g.cs
+C:\CourseWork\Marseille\bin\Debug\Xceed.Wpf.AvalonDock.dll
+C:\CourseWork\Marseille\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Aero.dll
+C:\CourseWork\Marseille\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Metro.dll
+C:\CourseWork\Marseille\bin\Debug\Xceed.Wpf.AvalonDock.Themes.VS2010.dll
+C:\CourseWork\Marseille\bin\Debug\Xceed.Wpf.Toolkit.dll
+C:\CourseWork\Marseille\bin\Debug\cs-CZ\Xceed.Wpf.AvalonDock.resources.dll
+C:\CourseWork\Marseille\bin\Debug\de\Xceed.Wpf.AvalonDock.resources.dll
+C:\CourseWork\Marseille\bin\Debug\es\Xceed.Wpf.AvalonDock.resources.dll
+C:\CourseWork\Marseille\bin\Debug\fr\Xceed.Wpf.AvalonDock.resources.dll
+C:\CourseWork\Marseille\bin\Debug\hu\Xceed.Wpf.AvalonDock.resources.dll
+C:\CourseWork\Marseille\bin\Debug\it\Xceed.Wpf.AvalonDock.resources.dll
+C:\CourseWork\Marseille\bin\Debug\ja-JP\Xceed.Wpf.AvalonDock.resources.dll
+C:\CourseWork\Marseille\bin\Debug\nl-BE\Xceed.Wpf.AvalonDock.resources.dll
+C:\CourseWork\Marseille\bin\Debug\pt-BR\Xceed.Wpf.AvalonDock.resources.dll
+C:\CourseWork\Marseille\bin\Debug\ro\Xceed.Wpf.AvalonDock.resources.dll
+C:\CourseWork\Marseille\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
+C:\CourseWork\Marseille\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
+C:\CourseWork\Marseille\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+C:\CourseWork\Marseille\obj\Debug\Forms\Rooms\CreateRoomWindow.baml
+C:\CourseWork\Marseille\obj\Debug\Forms\Rooms\FeaturesManagementWindow.g.cs
+C:\CourseWork\Marseille\obj\Debug\Forms\Rooms\FeaturesManagementWindow.baml
+C:\CourseWork\Marseille\obj\Debug\Forms\Rooms\RoomEditWindow.g.cs
+C:\CourseWork\Marseille\obj\Debug\Forms\Rooms\RoomEditWindow.baml
