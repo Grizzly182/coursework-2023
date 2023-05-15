@@ -9,7 +9,7 @@ namespace Marseille.Assets
 {
     public static class WindowsController
     {
-        public static void OpenWindow(this Window parent, Window window)
+        public static void OpenWindow(Window window, Window parent)
         {
             window.Closed += (sender, e) => { parent.Show(); };
             parent.Hide();
