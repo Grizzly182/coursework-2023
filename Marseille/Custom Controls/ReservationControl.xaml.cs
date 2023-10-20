@@ -1,17 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows.Controls;
 
 namespace Marseille.Custom_Controls
 {
@@ -20,9 +7,25 @@ namespace Marseille.Custom_Controls
     /// </summary>
     public partial class ReservationControl : UserControl
     {
+        private Reservation _reservation;
+
+        public Reservation Reservation
+        { get { return _reservation; } private set { _reservation = value; } }
+
         public ReservationControl()
+        { }
+
+        public ReservationControl(Reservation reservation)
         {
             InitializeComponent();
+            _reservation = reservation;
+            idTextBlock.Text = reservation.Id.ToString();
+            createTimeTextBlock.Text = reservation.CreateTime.ToString();
+            checkInTextBlock.Text = reservation.CheckInDate.Date.ToString();
+            checkOutTextBlock.Text = reservation.CheckOutDate.Date.ToString();
+            roomTextBlock.Text = reservation.Room.Number.ToString();
+            statusTextBlock.Text = reservation.Status.ToString();
+            clientsTextBlock.Text = reservation.ClientsToString;
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using Marseille.Assets;
 using System.Collections.Generic;
-using System.Drawing;
 
 namespace Marseille
 {
@@ -44,6 +43,11 @@ namespace Marseille
             Description = description;
             Status = status;
             Features = features;
+        }
+
+        public override string ToString()
+        {
+            return Number.ToString();
         }
     }
 }

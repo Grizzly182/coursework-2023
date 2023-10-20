@@ -1,0 +1,375 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Marseille.Client">
+    <Position X="9.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACACAAAAAAAAAEAAAAAAQABAAIAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Assets\Client.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Marseille.Reservation">
+    <Position X="3" Y="2.75" Width="1.5" />
+    <AssociationLine Name="Room" Type="Marseille.Room" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.5" Y="4.02" />
+        <Point X="5.01" Y="4.02" Type="JumpStart" />
+        <Point X="5.177" Y="4.02" Type="JumpEnd" />
+        <Point X="12.188" Y="4.02" />
+        <Point X="12.188" Y="4.5" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="User" Type="Marseille.User" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.375" Y="2.75" />
+        <Point X="4.375" Y="0.875" />
+        <Point X="9" Y="0.875" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAADAAAEAAAAAgAAADAAAAAAAAEAAAIAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Reservation.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Room" />
+      <Property Name="User" />
+      <Property Name="Status" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Clients" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Marseille.Room">
+    <Position X="11.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAEEAAgIAAUAEABAAAAAAAAAAAAAQAAAAQAAAA=</HashCode>
+      <FileName>Assets\Room.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Status" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Features" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Marseille.User">
+    <Position X="9" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACACAAAIAAAAAAAgAAAAQABAAAAAgAAAAQAAAAgFA=</HashCode>
+      <FileName>Assets\User.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="UserRole" />
+      <Property Name="CurrentUser" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Marseille.WrongLoginOrPasswordException">
+    <Position X="16.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Exceptions\WrongLoginOrPasswordException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Marseille.Assets.ErrorMessagesProider">
+    <Position X="4.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\ErrorMessagesProider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Marseille.Assets.IsolatedStorageController">
+    <Position X="0.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAABBAAgAAAAAAAAAAAAAAhAAAA=</HashCode>
+      <FileName>Assets\IsolatedStorageController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Marseille.Assets.RoomFeature">
+    <Position X="15.75" Y="4.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>ABACAAAAAAAAAAAEAQAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\RoomFeature.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Marseille.Assets.Utility">
+    <Position X="5.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Utility.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Marseille.Assets.WindowsController">
+    <Position X="7.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\WindowsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Marseille.Custom_Controls.ReservationControl" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="4.25" Width="1.5" />
+    <Members>
+      <Field Name="_reservation" Hidden="true" />
+    </Members>
+    <AssociationLine Name="Reservation" Type="Marseille.Reservation" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="2" Y="4.866" />
+        <Point X="2.375" Y="4.866" />
+        <Point X="2.375" Y="4.539" />
+        <Point X="3" Y="4.539" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Custom Controls\ReservationControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Reservation" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Marseille.Custom_Controls.RoomControl" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="5.5" Width="1.5" />
+    <Members>
+      <Field Name="_room" Hidden="true" />
+    </Members>
+    <AssociationLine Name="Room" Type="Marseille.Room" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="8.562" Y="5.5" />
+        <Point X="8.562" Y="4.344" />
+        <Point X="11.656" Y="4.344" />
+        <Point X="11.656" Y="5.562" />
+        <Point X="11.75" Y="5.562" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Custom Controls\RoomControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Room" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Marseille.Custom_Controls.UsersControl" BaseTypeListCollapsed="true">
+    <Position X="5" Y="5.25" Width="1.5" />
+    <Members>
+      <Field Name="_user" Hidden="true" />
+    </Members>
+    <AssociationLine Name="User" Type="Marseille.User" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.094" Y="5.25" />
+        <Point X="5.094" Y="1.562" />
+        <Point X="9" Y="1.562" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAA=</HashCode>
+      <FileName>Custom Controls\UsersControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="User" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Marseille.Forms.AdminWindow" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="8.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>EMgAADAAAgAAAAAAAgQEAAAQEAAAgABAAAAAAAAAAAE=</HashCode>
+      <FileName>Forms\AdminWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="_reservations" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Marseille.Forms.LoginWindow" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="11" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAgAAAAAABAAAAAAAgABAAAAEAAAAABA=</HashCode>
+      <FileName>Forms\LoginWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Marseille.Forms.ManagerWindow" BaseTypeListCollapsed="true">
+    <Position X="6.25" Y="8.75" Width="2.75" />
+    <AssociationLine Name="_users" Type="Marseille.Custom_Controls.UsersControl" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.062" Y="8.75" />
+        <Point X="7.062" Y="6.092" />
+        <Point X="6.5" Y="6.092" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAggBCEBAAgAQAAAQAAAAIoCAAAMEAAAAAAA=</HashCode>
+      <FileName>Forms\ManagerWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="_users" />
+      <Field Name="_rooms" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Marseille.Forms.CreateClientWindow" BaseTypeListCollapsed="true">
+    <Position X="1.75" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAQAAAAAAAQAAAQAAAAAAA=</HashCode>
+      <FileName>Forms\Reservations\CreateClientWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Marseille.Forms.EditReservationWindow" BaseTypeListCollapsed="true">
+    <Position X="3.75" Y="8.75" Width="2.25" />
+    <AssociationLine Name="_reservation" Type="Marseille.Reservation" FixedToPoint="true">
+      <Path>
+        <Point X="4.062" Y="8.75" />
+        <Point X="4.062" Y="5.074" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Forms\Reservations\EditReservationWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_reservation" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Marseille.Forms.ReservationCreateWindow" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="8.75" Width="2.5" />
+    <AssociationLine Name="_rooms" Type="Marseille.Room" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="11.188" Y="8.75" />
+        <Point X="11.188" Y="7.969" />
+        <Point X="11.938" Y="7.969" />
+        <Point X="11.938" Y="7.594" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAQAAAAAAAAgAQAAAQAAIAAAA=</HashCode>
+      <FileName>Forms\Reservations\ReservationCreateWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="_rooms" />
+      <Property Name="Clients" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Marseille.Forms.CreateRoomWindow" BaseTypeListCollapsed="true">
+    <Position X="17.75" Y="8.75" Width="2.25" />
+    <Members>
+      <Field Name="featuresList" Hidden="true" />
+    </Members>
+    <AssociationLine Name="features" Type="Marseille.Assets.RoomFeature" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="18" Y="8.75" />
+        <Point X="18" Y="6.18" />
+        <Point X="17.062" Y="6.18" />
+        <Point X="17.062" Y="5.805" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAIAAEAAAAAAAAAAAAAAAIQEAAQAAAAAAA=</HashCode>
+      <FileName>Forms\Rooms\CreateRoomWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="features" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Marseille.Forms.FeaturesManagementWindow" BaseTypeListCollapsed="true">
+    <Position X="15" Y="8.75" Width="2.25" />
+    <AssociationLine Name="roomFeatures" Type="Marseille.Assets.RoomFeature" FixedFromPoint="true">
+      <Path>
+        <Point X="16.188" Y="8.75" />
+        <Point X="16.188" Y="5.805" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAMAAAAAAAAAAAAAgAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Forms\Rooms\FeaturesManagementWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="roomFeatures" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Marseille.Forms.RoomEditWindow" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="8.75" Width="2.25" />
+    <Members>
+      <Field Name="featuresList" Hidden="true" />
+    </Members>
+    <AssociationLine Name="features" Type="Marseille.Assets.RoomFeature" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="14.5" Y="9.625" />
+        <Point X="14.74" Y="9.625" />
+        <Point X="14.74" Y="5.5" />
+        <Point X="15.75" Y="5.5" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAEEAAAAAAAIAAEAAAAAAAAAAAAAAgIAEAAQAAAAAAA=</HashCode>
+      <FileName>Forms\Rooms\RoomEditWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_room" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="features" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Marseille.Forms.CreateUserWindow" BaseTypeListCollapsed="true">
+    <Position X="3.5" Y="10.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAQAAAQAAAAABA=</HashCode>
+      <FileName>Forms\Users\CreateUserWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Marseille.Forms.EditUserWindow" BaseTypeListCollapsed="true">
+    <Position X="20.25" Y="8.75" Width="2.5" />
+    <AssociationLine Name="user" Type="Marseille.User" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="21.375" Y="8.75" />
+        <Point X="21.375" Y="1.062" />
+        <Point X="10.5" Y="1.062" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAIAAAAAAQAAAAAQAAAAARA=</HashCode>
+      <FileName>Forms\Users\EditUserWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="user" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="HotelDB.DBConnection">
+    <Position X="18.5" Y="1.25" Width="2.5" />
+    <TypeIdentifier />
+  </Class>
+  <Enum Name="Marseille.Role">
+    <Position X="14" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Enum\RolesEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Marseille.Assets.ReservationStatus">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAgAAIAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Enum\ReservationStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Marseille.Assets.RoomStatus">
+    <Position X="13.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAgAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Enum\RoomStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

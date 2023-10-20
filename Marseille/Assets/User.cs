@@ -1,5 +1,4 @@
 ﻿using Marseille.Assets;
-using System.Windows.Documents;
 
 namespace Marseille
 {

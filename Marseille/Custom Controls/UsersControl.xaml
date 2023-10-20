@@ -19,6 +19,7 @@
             </Style.Resources>
         </Style>
     </UserControl.Resources>
+
     <Border BorderThickness="4" BorderBrush="#bcbdf7" CornerRadius="5" HorizontalAlignment="Stretch">
         <Grid x:Name="mainGrid" HorizontalAlignment="Stretch">
             <Grid.ColumnDefinitions>
@@ -63,7 +64,7 @@
                 <Button x:Name="editButton" Margin="10" BorderThickness="0" Background="Blue">
                     <Image Source="/resources/Icons/edit.png" Width="25" Margin="5" />
                 </Button>
-                <Button x:Name="deleteButton" Margin="10" BorderThickness="0" Background="Red" IsEnabled="{Binding ElementName=usersControl, Path=IsCurrentUser}">
+                <Button x:Name="deleteButton" Margin="10" BorderThickness="0" Background="Red">
                     <Image Source="/resources/Icons/delete.png" Width="25" Margin="5" />
                 </Button>
             </StackPanel>

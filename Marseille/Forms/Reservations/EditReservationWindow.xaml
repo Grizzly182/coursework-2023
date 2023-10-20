@@ -1,0 +1,31 @@
+﻿<Window x:Class="Marseille.Forms.EditReservationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Marseille.Forms"
+        mc:Ignorable="d"
+        Title="Редактирование брони" Height="225" Width="400">
+
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5" />
+                </Style>
+            </Style.Resources>
+        </Style>
+    </Window.Resources>
+
+    <Grid x:Name="mainGrid">
+        <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Center">
+            <ComboBox x:Name="statusComboBox" Margin="0 50" Width="200" FontSize="16">
+                <ComboBoxItem IsSelected="True" Content="Ожидает оплаты" />
+                <ComboBoxItem Content="Оплачено" />
+                <ComboBoxItem Content="Отменено" />
+                <ComboBoxItem Content="Завершено" />
+            </ComboBox>
+            <Button x:Name="editButton" IsDefault="True" Width="200" BorderThickness="0" Background="#5759ea" Foreground="White" IsCancel="True" FontSize="28" Click="editButton_Click">Изменить</Button>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\CourseWork\Marseille\App.xaml
-112010839674
-
-28467573071
-23-1511719072
-Custom Controls\ReservationControl.xaml;Custom Controls\RoomControl.xaml;Custom Controls\UsersControl.xaml;Forms\AdminWindow.xaml;Forms\Rooms\RoomEditWindow.xaml;Forms\Rooms\CreateRoomWindow.xaml;Forms\Rooms\FeaturesManagementWindow.xaml;Forms\Users\EditUserWindow.xaml;Forms\Users\CreateUserWindow.xaml;Forms\LoginWindow.xaml;Forms\ManagerWindow.xaml;
+14-1401308105
+101245218946
+331471908531
+155-2057400836
+Custom Controls\ReservationControl.xaml;Custom Controls\RoomControl.xaml;Custom Controls\UsersControl.xaml;Forms\AdminWindow.xaml;Forms\Reservations\EditReservationWindow.xaml;Forms\Reservations\ReservationCreateWindow.xaml;Forms\Reservations\CreateClientWindow.xaml;Forms\Rooms\RoomEditWindow.xaml;Forms\Rooms\CreateRoomWindow.xaml;Forms\Rooms\FeaturesManagementWindow.xaml;Forms\Users\EditUserWindow.xaml;Forms\Users\CreateUserWindow.xaml;Forms\LoginWindow.xaml;Forms\ManagerWindow.xaml;
 
 False
 

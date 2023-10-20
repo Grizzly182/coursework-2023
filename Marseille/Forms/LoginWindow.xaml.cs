@@ -1,12 +1,10 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Media;
-using HotelDB;
-using System.Windows.Input;
+﻿using HotelDB;
 using Marseille.Assets;
+using System;
 using System.Collections.Generic;
-
-using Marseille.Assets;
+using System.Windows;
+using System.Windows.Input;
+using System.Windows.Media;
 
 namespace Marseille.Forms
 {

@@ -1,9 +1,9 @@
 ﻿using HotelDB;
 using Marseille.Assets;
 using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Collections.Generic;
 
 namespace Marseille.Forms
 {

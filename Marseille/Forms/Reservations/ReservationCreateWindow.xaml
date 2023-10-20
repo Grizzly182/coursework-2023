@@ -1,0 +1,92 @@
+﻿<Window x:Class="Marseille.Forms.ReservationCreateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Marseille.Forms"
+        mc:Ignorable="d"
+        Title="ReservationCreateWindow" Height="550" Width="800" ResizeMode="NoResize">
+    <Window.Resources>
+        <Style TargetType="{x:Type TextBox}">
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10" />
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style TargetType="{x:Type PasswordBox}">
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10" />
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style TargetType="{x:Type Button}">
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5" />
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style TargetType="{x:Type DatePicker}">
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8" />
+                </Style>
+            </Style.Resources>
+        </Style>
+    </Window.Resources>
+
+    <Grid x:Name="mainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="70" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" HorizontalAlignment="Center">
+
+            <StackPanel Margin="20" Orientation="Horizontal">
+                <TextBlock x:Name="checkInTextBlock" Margin="5" Width="90">Дата въезда</TextBlock>
+                <DatePicker x:Name="checkInDatePicker" Width="500" BorderThickness="2" BorderBrush="#5759ea"  ></DatePicker>
+            </StackPanel>
+
+            <StackPanel Margin="20" Orientation="Horizontal">
+                <TextBlock x:Name="checkOutTextBlock" Margin="5" Width="90">Дата выезда</TextBlock>
+                <DatePicker x:Name="checkOutDatePicker" Width="500" BorderThickness="2" BorderBrush="#5759ea"  ></DatePicker>
+            </StackPanel>
+
+            <StackPanel Margin="5 10" Orientation="Horizontal" HorizontalAlignment="Center">
+                <StackPanel HorizontalAlignment="Right" Margin="50 0 50 0">
+                    <TextBlock x:Name="statusTextBlock" Margin="5" Width="110">Статус</TextBlock>
+                    <ComboBox x:Name="statusComboBox" Width="200" BorderThickness="2" BorderBrush="#5759ea">
+                        <ComboBoxItem IsSelected="True" Content="Ожидание оплаты" />
+                        <ComboBoxItem Content="Оплачена" />
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right" Margin="50 0 50 0">
+                    <TextBlock x:Name="roomTextBlock" Margin="5" Width="110">Комната</TextBlock>
+                    <ComboBox x:Name="roomsComboBox" Width="200" BorderThickness="2" BorderBrush="#5759ea" />
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Margin="20" Orientation="Horizontal">
+                <StackPanel HorizontalAlignment="Left">
+                    <TextBlock Text="Жильцы:" />
+                    <ListView Height="170" x:Name="clientsListView" Width="300" BorderThickness="2">
+                    </ListView>
+                </StackPanel>
+                <StackPanel Margin="20" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <Button x:Name="addClientButton" Margin="0 10" Width="200" Content="Добавить жильца" FontSize="18" BorderThickness="0" Foreground="White" Background="#5759ea" Click="addClientButton_Click" />
+                    <Button x:Name="removeClientButton" Margin="0 10" Width="200" Content="Удалить жильца" FontSize="18" BorderThickness="0" Foreground="White" Background="Red" Click="removeClientButton_Click" />
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel  Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Viewbox Width="250" Margin="10">
+                <Button x:Name="createButton" IsDefault="True" Width="100" BorderThickness="0" Background="#5759ea" Foreground="White" Click="createButton_Click">Создать</Button>
+            </Viewbox>
+            <Viewbox Width="250" Margin="10">
+                <Button x:Name="cancelButton" IsDefault="True" Width="100" BorderThickness="0" Background="Red" Foreground="White" IsCancel="True" Click="cancelButton_Click">Отмена</Button>
+            </Viewbox>
+        </StackPanel>
+    </Grid>
+</Window>

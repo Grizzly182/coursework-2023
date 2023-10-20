@@ -8,7 +8,25 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("forms/%d0%9c%d0%be%d0%bd%d1%82%d0%b0%d0%b6%d0%bd%d0%b0%d1%8f%20%d0%be%d0%b1%d0%bb" +
-    "%d0%b0%d1%81%d1%82%d1%8c%201.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("packages/harfbuzzsharp.nativeassets.macos.2.8.2.3/runtimes/osx/native/libharfbuzz" +
+    "sharp.dylib")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("packages/harfbuzzsharp.nativeassets.macos.2.8.2.3/runtimes/osx/native/libharfbuzz" +
+    "sharp.dylib")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("packages/harfbuzzsharp.nativeassets.win32.2.8.2.3/runtimes/win-x86/native/libharf" +
+    "buzzsharp.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("packages/harfbuzzsharp.nativeassets.win32.2.8.2.3/runtimes/win-x64/native/libharf" +
+    "buzzsharp.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("packages/harfbuzzsharp.nativeassets.win32.2.8.2.3/runtimes/win-arm64/native/libha" +
+    "rfbuzzsharp.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("packages/skiasharp.nativeassets.macos.2.88.3/runtimes/osx/native/libskiasharp.dyl" +
+    "ib")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("packages/skiasharp.nativeassets.macos.2.88.3/runtimes/osx/native/libskiasharp.dyl" +
+    "ib")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("packages/skiasharp.nativeassets.win32.2.88.3/runtimes/win-x86/native/libskiasharp" +
+    ".dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("packages/skiasharp.nativeassets.win32.2.88.3/runtimes/win-x64/native/libskiasharp" +
+    ".dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("packages/skiasharp.nativeassets.win32.2.88.3/runtimes/win-arm64/native/libskiasha" +
+    "rp.dll")]
 
 

@@ -1,8 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Data;
-using System.Xml.Linq;
 
 namespace HotelDB
 {
@@ -136,6 +134,31 @@ namespace HotelDB
                 while (reader.ReadAsync().Result)
                 {
                     id = reader.GetUInt32("id");
+                    name = reader.GetString("name");
+                    surname = reader.GetString("surname");
+                    patronymic = reader.GetString("patronymic");
+                    role = reader.GetInt32("role_id");
+                }
+            }
+
+            Close();
+        }
+
+        public static void GetUserData(uint id, out string login, out string name, out string surname, out string patronymic, out int role)
+        {
+            MySqlCommand cmd = CreateCommandWithParameters("Select `login`,`name`,`surname`,`patronymic`,`role_id` from `users` where `id` = @id;",
+                new Dictionary<string, string> { { "@id", id.ToString() } });
+
+            name = surname = patronymic = login = string.Empty;
+            role = 1;
+
+            Open();
+
+            using (MySqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.ReadAsync().Result)
+                {
+                    login = reader.GetString("login");
                     name = reader.GetString("name");
                     surname = reader.GetString("surname");
                     patronymic = reader.GetString("patronymic");
@@ -326,6 +349,7 @@ namespace HotelDB
         /// <param name="type"></param>
         /// <param name="description"></param>
         /// <param name="statusId"></param>
+        /// <param name="features"></param>
         public static void CreateRoom(uint number, decimal cost, int bedsCount, string type, string description, int statusId, Dictionary<uint, string> features)
         {
             MySqlCommand cmd = CreateCommand(
@@ -359,6 +383,17 @@ namespace HotelDB
             }
         }
 
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="number"></param>
+        /// <param name="cost"></param>
+        /// <param name="bedsCount"></param>
+        /// <param name="type"></param>
+        /// <param name="description"></param>
+        /// <param name="statusId"></param>
+        /// <param name="features"></param>
         public static void EditRoom(uint id, uint number, decimal cost, int bedsCount, string type, string description, int statusId, Dictionary<uint, string> features)
         {
             MySqlCommand cmd;
@@ -470,33 +505,175 @@ namespace HotelDB
             Close();
         }
 
-        //TODO: Delete this later
         /// <summary>
         ///
         /// </summary>
-        /// <param name="password"></param>
-        //public static void RegisterAdmin(string login, string password)
-        //{
-        //    MySqlCommand cmd = connection.CreateCommand();
-        //    PasswordManager passwordManager = new PasswordManager();
-        //    string hashPassword = passwordManager.GeneratePasswordHash(password, out string salt);
+        /// <returns></returns>
+        public static List<uint> GetAllReservationsIds()
+        {
+            MySqlCommand cmd = CreateCommand("Select `id` from `reservations`;");
+            List<uint> ids = new List<uint>();
 
-        //    cmd.CommandText = $"INSERT INTO marseille.users (`login`, `password`, `salt`, `name`, `surname`, `patronymic`, `role_id`) VALUES ('{login}', '{hashPassword}', '{salt}', 'Михаил', 'Белоусов', 'Анатольевич', 1);";
-        //    Open();
-        //    cmd.ExecuteNonQuery();
-        //    Close();
-        //}
+            Open();
+            using (MySqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    ids.Add(reader.GetUInt32("id"));
+                }
+            }
+            Close();
 
-        //public static void RegisterManager(string login, string password)
-        //{
-        //    MySqlCommand cmd = connection.CreateCommand();
-        //    PasswordManager passwordManager = new PasswordManager();
-        //    string hashPassword = passwordManager.GeneratePasswordHash(password, out string salt);
+            return ids;
+        }
 
-        //    cmd.CommandText = $"INSERT INTO marseille.users (`login`, `password`, `salt`, `name`, `surname`, `patronymic`, `role_id`) VALUES ('{login}', '{hashPassword}', '{salt}', 'Владимир', 'Поликарпов', 'Владимирович', 2);";
-        //    Open();
-        //    cmd.ExecuteNonQuery();
-        //    Close();
-        //}
+        public static void GetReservationData(uint id, out DateTime time, out DateTime checkInDate, out DateTime checkOutDate, out uint roomId, out uint userId, out uint statusId)
+        {
+            MySqlCommand cmd = CreateCommand("Select `time`, `check_in_date`, `check_out_date`, `room_id`, `users_id`, `statuse_id` from " +
+                $"`reservations` where (`id` = '{id}');");
+
+            time = checkInDate = checkOutDate = DateTime.Now;
+            roomId = userId = statusId = 0;
+
+            Open();
+            using (MySqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    time = reader.GetDateTime("time");
+                    checkInDate = reader.GetDateTime("check_in_date");
+                    checkOutDate = reader.GetDateTime("check_out_date");
+                    roomId = reader.GetUInt32("room_id");
+                    userId = reader.GetUInt32("users_id");
+                    statusId = reader.GetUInt32("statuse_id");
+                }
+            }
+            Close();
+        }
+
+        public static void CreateReservation(DateTime time, DateTime checkInDate, DateTime checkOutDate, uint roomId, uint userId, uint statusId)
+        {
+            MySqlCommand cmd = CreateCommand("Insert into `reservations`(`time`, `check_in_date`, `check_out_date`, `room_id`, `users_id`, `statuse_id`) values " +
+                            $"('{time.ToShortDateString()}', '{checkInDate.ToShortDateString()}', '{checkOutDate.ToShortDateString()}', '{roomId}', '{userId}', '{statusId}');");
+
+            Open();
+            cmd.ExecuteNonQuery();
+            Close();
+        }
+
+        public static void DeleteReservation(uint id)
+        {
+            MySqlCommand cmd = CreateCommand($"Delete from `reservations` where (`id` = '{id}');");
+
+            Open();
+            cmd.ExecuteNonQuery();
+            Close();
+        }
+
+        public static List<uint> GetReservationClientsIds(uint id)
+        {
+            MySqlCommand cmd = CreateCommand($"Select `clients_id` from `clients_has_reservations` where (`reservations_id` = '{id}');");
+            List<uint> ids = new List<uint>();
+
+            Open();
+            using (MySqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    ids.Add(reader.GetUInt32("clients_id"));
+                }
+            }
+            Close();
+            return ids;
+        }
+
+        public static List<uint> GetAllClientsIds()
+        {
+            MySqlCommand cmd = CreateCommand($"Select `id` from `clients`;");
+            List<uint> ids = new List<uint>();
+
+            Open();
+            using (MySqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    ids.Add(reader.GetUInt32("id"));
+                }
+            }
+            Close();
+            return ids;
+        }
+
+        public static void SetRoomStatus(uint id, uint statusId)
+        {
+            MySqlCommand cmd = CreateCommand($"UPDATE `rooms` Set `status_id` = '{statusId}' " +
+                $"WHERE (`id` = '{id}');");
+
+            Open();
+            cmd.ExecuteNonQuery();
+            Close();
+        }
+
+        public static void SetReservationStatus(uint id, uint statusId)
+        {
+            MySqlCommand cmd = CreateCommand($"UPDATE `reservations` Set `statuse_id` = '{statusId}' " +
+                $"WHERE (`id` = '{id}');");
+
+            Open();
+            cmd.ExecuteNonQuery();
+            Close();
+        }
+
+        public static void GetClientData(uint id, out string name, out string surname, out string patronymic, out DateTime birthday, out string phone)
+        {
+            MySqlCommand cmd = CreateCommand("Select `name`, `surname`, `patronymic`, `birthday`, `phone` from " +
+                $"`clients` where (`id` = '{id}');");
+
+            name = surname = patronymic = phone = string.Empty;
+            birthday = DateTime.Now;
+
+            Open();
+            using (MySqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    name = reader.GetString("name");
+                    surname = reader.GetString("surname");
+                    patronymic = reader.GetString("patronymic");
+                    phone = reader.GetString("phone");
+                    birthday = reader.GetDateTime("birthday");
+                }
+            }
+            Close();
+        }
+
+        public static void CreateClient(string name, string surname, string patronymic, DateTime birthday, string phone)
+        {
+            MySqlCommand cmd = CreateCommand("Insert into `clients`(`name`, `surname`, `patronymic`, `birthday`, `phone`) values " +
+                            $"('{name}', '{surname}', '{patronymic}', '{birthday.ToShortDateString()}', '{phone}');");
+
+            Open();
+            cmd.ExecuteNonQuery();
+            Close();
+        }
+
+        public static void RemoveClient(uint id)
+        {
+            MySqlCommand cmd = CreateCommand($"Remove from `clients` where (`id` = {id});");
+
+            Open();
+            cmd.ExecuteNonQuery();
+            Close();
+        }
+
+        public static void AddClientToReservation(uint clientId, uint reservationId)
+        {
+            MySqlCommand cmd = CreateCommand("Insert into `clients_has_reservations`(`clients_id`, `reservations_id`) values " +
+            $"('{clientId}', '{reservationId}');");
+
+            Open();
+            cmd.ExecuteNonQuery();
+            Close();
+        }
     }
 }
